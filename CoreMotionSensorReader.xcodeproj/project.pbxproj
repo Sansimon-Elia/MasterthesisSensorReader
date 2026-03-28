@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		194464032F68A0B6003FE038 /* PythonBridgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194464022F68A0A5003FE038 /* PythonBridgeService.swift */; };
+		19EAA6AB2F7859F300769298 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA6AA2F7859DB00769298 /* WatchPayload.swift */; };
+		19EAA6AC2F78880900769298 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA6AA2F7859DB00769298 /* WatchPayload.swift */; };
 		510617C72C3D662800186390 /* WatchCsvWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510617C62C3D662800186390 /* WatchCsvWriter.swift */; };
 		510617CC2C3EB8CB00186390 /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510617CB2C3EB8CB00186390 /* HealthDataManager.swift */; };
 		511410452C22E5B2004ACAE4 /* AirPodsSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511410442C22E5B2004ACAE4 /* AirPodsSensorData.swift */; };
@@ -94,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		194464022F68A0A5003FE038 /* PythonBridgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonBridgeService.swift; sourceTree = "<group>"; };
+		19EAA6AA2F7859DB00769298 /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
 		510617C62C3D662800186390 /* WatchCsvWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchCsvWriter.swift; sourceTree = "<group>"; };
 		510617CB2C3EB8CB00186390 /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		511410442C22E5B2004ACAE4 /* AirPodsSensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPodsSensorData.swift; sourceTree = "<group>"; };
@@ -179,6 +182,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19EAA6A92F7859C400769298 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19EAA6AA2F7859DB00769298 /* WatchPayload.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		510617C82C3EB53700186390 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +302,7 @@
 		5183575A2C1DF2D1000EAD64 /* WatchCoreMotionSensorReader Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				19EAA6A92F7859C400769298 /* Model */,
 				5172CF8F2D1ED52000BCD740 /* WatchCoreMotionSensorReader Watch App.entitlements */,
 				511410492C22FB1C004ACAE4 /* WatchCoreMotionSensorReader-Watch-App-Info.plist */,
 				511410482C22FAD5004ACAE4 /* Delegates */,
@@ -585,6 +597,7 @@
 				51E484732C2716A60084A3C7 /* AirPodsCsvWriterService.swift in Sources */,
 				5188105A2DBBD86200F17C4E /* ButterworthLowPassFilter.swift in Sources */,
 				516BD6EE2D807B840087FCFB /* ModelService.swift in Sources */,
+				19EAA6AC2F78880900769298 /* WatchPayload.swift in Sources */,
 				514CBA372D6E04310081AC06 /* DebugView.swift in Sources */,
 				519FD5342DA588DA008F662F /* LabelMapper.swift in Sources */,
 				516510442D8C77F90029FA3E /* ClassificationView.swift in Sources */,
@@ -609,6 +622,7 @@
 				511410472C22FAD1004ACAE4 /* TherapySessionDelegate.swift in Sources */,
 				51CD6AB82C20652100C53B8A /* ConnectivityService.swift in Sources */,
 				51CD6AAF2C203CE700C53B8A /* SensorView.swift in Sources */,
+				19EAA6AB2F7859F300769298 /* WatchPayload.swift in Sources */,
 				5172CF882D1EC8DB00BCD740 /* WorkOutManager.swift in Sources */,
 				51CD6AA42C1EE3E100C53B8A /* BatchedSensorData.swift in Sources */,
 				51CD6A9F2C1EE28200C53B8A /* SensorData.swift in Sources */,

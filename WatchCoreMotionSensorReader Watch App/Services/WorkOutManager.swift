@@ -23,6 +23,11 @@ class WorkoutManager: NSObject, ObservableObject {
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
     
+    override init() {
+        super.init()
+        sensorReader.workoutManager = self
+    }
+    
     func startWorkout() {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .other
@@ -48,6 +53,7 @@ class WorkoutManager: NSObject, ObservableObject {
         builder?.beginCollection(withStart: startDate) { (success, error) in
             
         }
+        sensorReader.startReadingSensors()
     }
     
     func requestAuthorization() {
@@ -86,6 +92,7 @@ class WorkoutManager: NSObject, ObservableObject {
 
     func endWorkout() {
         session?.end()
+        sensorReader.stopReadingSensors()
     }
     
     func updateForStatistics(_ statistics: HKStatistics?) {

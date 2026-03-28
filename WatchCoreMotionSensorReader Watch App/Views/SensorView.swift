@@ -25,7 +25,6 @@ struct SensorView: View {
             if(startedRunning == false){
                 Button("Starte Workout/Sensoren") {
                     workoutManager.startWorkout()
-                    sensorReader.startReadingSensors()
                     startedRunning = true
                     
                 }
@@ -37,7 +36,6 @@ struct SensorView: View {
             } else {
                 Button("Beende Workout/Sensor") {
                     workoutManager.endWorkout()
-                    sensorReader.stopReadingSensors()
                     startedRunning = false
                     
                 }

@@ -42,6 +42,10 @@ class WatchReciverController: NSObject, WCSessionDelegate {
     
     var elapsedTime: TimeInterval = 0.0
     
+    // Variablen für Heartrate
+    var currentHeartRate: Double = 0
+    var currentAverageHeartRate: Double = 0
+    
     
     var isCollectingTrainData: Bool = false
     var isCountTimerRunning: Bool = false
@@ -133,44 +137,43 @@ class WatchReciverController: NSObject, WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
         DispatchQueue.global(qos: .userInitiated).async {
-            if let sensorArray = try? JSONDecoder().decode([SensorData].self, from: messageData) {
+            if let payload = try? JSONDecoder().decode(WatchPayload.self, from: messageData) {
+                let sensorArray = payload.sensorBatch
+
                 DispatchQueue.main.async {
                     self.sensorData.append(contentsOf: sensorArray)
                     self.lastSensorData = sensorArray.last
-                    
-                    //Code von mir hinzugefügt für Senden von Daten
+                    self.currentHeartRate = payload.heartRate
+                    self.currentAverageHeartRate = payload.averageHeartRate
+
                     if self.isStreamingToPython, let latest = sensorArray.last {
-                        self.pythonBridge.sendSensorData(latest)
+                        self.pythonBridge.sendSensorData(
+                            latest,
+                            heartRate: payload.heartRate,
+                            averageHeartRate: payload.averageHeartRate
+                        )
                     }
-                    
+
                     let filter = SensorDataProcessor(alpha: 0.2)
                     let filteredSensorArray = sensorArray.map { filter.processData($0) }
-                    
+
                     self.filterSensorData.append(contentsOf: filteredSensorArray)
-                    
-                    
+
                     if self.isCollectingTrainData {
                         self.tempData.append(contentsOf: sensorArray)
                         self.filterdTempData.append(contentsOf: filteredSensorArray)
                     }
-                    
+
                     if filteredSensorArray.last != nil {
                         self.armPositionThreshholdLabel = self.watchThresholdservice.getThresholdLabel(data: sensorArray.last!)
                     }
-                    
-                    
-                    /*
-                     if sensorArray.last != nil {
-                     self.armPositionThreshholdLabel = self.watchThresholdservice.getThresholdLabel(data: sensorArray.last!)
-                     
-                     }
-                     */
-                    
+
                     sensorArray.forEach {
                         self.processData(data: $0)
                     }
-                    
                 }
+            } else {
+                print("Konnte WatchPayload nicht dekodieren")
             }
         }
     }

@@ -9,6 +9,8 @@ class MotionDataController {
     
     private let connectivity = ConnectivityService()
     
+    var workoutManager : WorkoutManager?
+    
     private var sensorBuffer: [SensorData] = []
     private let maxBufferSize = 500 
     
@@ -77,7 +79,15 @@ class MotionDataController {
         guard !sensorBuffer.isEmpty else { return }
         
         sensorDataQueue.async(flags: .barrier) {
-            self.connectivity.sendSensorDataBatch(data: self.sensorBuffer)
+            let currentHeartRate = self.workoutManager?.heartRate ?? 0
+            let currentAverageHeartRate = self.workoutManager?.averageHeartRate ?? 0
+            
+            self.connectivity.sendPayload(
+                sensorBatch: self.sensorBuffer,
+                heartRate: currentHeartRate,
+                averageHeartRate: currentAverageHeartRate
+            )
+            
             print("Batch gesendet mit \(self.sensorBuffer.count) Einträgen")
             self.sensorBuffer.removeAll()
         }

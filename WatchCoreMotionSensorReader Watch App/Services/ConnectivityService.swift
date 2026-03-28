@@ -76,6 +76,26 @@ class ConnectivityService: NSObject, WCSessionDelegate {
             session.sendMessageData(encodedData, replyHandler: nil, errorHandler: nil)
         }
     }
+    
+    func sendPayload(sensorBatch: [SensorData], heartRate: Double, averageHeartRate: Double) {
+        guard session.activationState == .activated && session.isReachable else {
+            print("Session nicht erreichbar")
+            return
+        }
+
+        let payload = WatchPayload(
+            sensorBatch: sensorBatch,
+            heartRate: heartRate,
+            averageHeartRate: averageHeartRate,
+            timestamp: Date()
+        )
+
+        if let encodedData = try? JSONEncoder().encode(payload) {
+            session.sendMessageData(encodedData, replyHandler: nil, errorHandler: nil)
+        } else {
+            print("Payload konnte nicht encodiert werden")
+        }
+    }
 
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
