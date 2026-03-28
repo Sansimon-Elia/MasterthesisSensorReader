@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194464032F68A0B6003FE038 /* PythonBridgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194464022F68A0A5003FE038 /* PythonBridgeService.swift */; };
 		510617C72C3D662800186390 /* WatchCsvWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510617C62C3D662800186390 /* WatchCsvWriter.swift */; };
 		510617CC2C3EB8CB00186390 /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510617CB2C3EB8CB00186390 /* HealthDataManager.swift */; };
 		511410452C22E5B2004ACAE4 /* AirPodsSensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511410442C22E5B2004ACAE4 /* AirPodsSensorData.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		194464022F68A0A5003FE038 /* PythonBridgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonBridgeService.swift; sourceTree = "<group>"; };
 		510617C62C3D662800186390 /* WatchCsvWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchCsvWriter.swift; sourceTree = "<group>"; };
 		510617CB2C3EB8CB00186390 /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		511410442C22E5B2004ACAE4 /* AirPodsSensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPodsSensorData.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				51E484712C2716950084A3C7 /* AirPods */,
 				51F7C0022C23086C0058B12F /* SoundService.swift */,
 				510617CB2C3EB8CB00186390 /* HealthDataManager.swift */,
+				194464022F68A0A5003FE038 /* PythonBridgeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -495,7 +498,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					518357432C1DF1F8000EAD64 = {
 						CreatedOnToolsVersion = 15.4;
@@ -577,6 +580,7 @@
 				51E484702C2714E40084A3C7 /* AirPodsPredictionService.swift in Sources */,
 				513E54612D65EE0600CCC1CE /* FeatureExtractor.swift in Sources */,
 				5165104B2D8C974C0029FA3E /* UserMovementDetection.swift in Sources */,
+				194464032F68A0B6003FE038 /* PythonBridgeService.swift in Sources */,
 				51CD6A9E2C1EE28200C53B8A /* SensorData.swift in Sources */,
 				51E484732C2716A60084A3C7 /* AirPodsCsvWriterService.swift in Sources */,
 				5188105A2DBBD86200F17C4E /* ButterworthLowPassFilter.swift in Sources */,
@@ -683,6 +687,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -740,6 +745,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -754,6 +760,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreMotionSensorReader/Preview Content\"";
+				DEVELOPMENT_TEAM = WJ9JY7S5U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreMotionSensorReader/Info.plist;
@@ -773,7 +780,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maurice.richter.CoreMotionSensorReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sansimon.elia.CoreMotionSensorReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -790,6 +797,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_ASSET_PATHS = "\"CoreMotionSensorReader/Preview Content\"";
+				DEVELOPMENT_TEAM = WJ9JY7S5U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoreMotionSensorReader/Info.plist;
@@ -809,7 +817,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maurice.richter.CoreMotionSensorReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sansimon.elia.CoreMotionSensorReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -826,6 +834,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchCoreMotionSensorReader Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = WJ9JY7S5U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchCoreMotionSensorReader-Watch-App-Info.plist";
@@ -834,13 +843,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Für das Lesen der Gesundheitsdaten wird dieser Zugriff benötigt";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Wird benötigt um Gesundheitsdaten während des Workouts zu updaten";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.maurice.richter.CoreMotionSensorReader;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.sansimon.elia.CoreMotionSensorReader;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maurice.richter.CoreMotionSensorReader.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sansimon.elia.CoreMotionSensorReader.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -860,6 +869,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchCoreMotionSensorReader Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = WJ9JY7S5U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchCoreMotionSensorReader-Watch-App-Info.plist";
@@ -868,13 +878,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Für das Lesen der Gesundheitsdaten wird dieser Zugriff benötigt";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Wird benötigt um Gesundheitsdaten während des Workouts zu updaten";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.maurice.richter.CoreMotionSensorReader;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.sansimon.elia.CoreMotionSensorReader;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maurice.richter.CoreMotionSensorReader.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sansimon.elia.CoreMotionSensorReader.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

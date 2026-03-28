@@ -49,6 +49,12 @@ struct WatchAirPodsSensorView: View {
         VStack(alignment: .leading) {
             
             List {
+                
+                // Toggle von Sansimon um SendeDaten zu aktivieren um Daten an Flask Server zu schicken
+                Section(header: Text("Python Streaming")) {
+                    Toggle("Sende Sensordaten an Python", isOn: $watchReciever.isStreamingToPython)
+                }
+                
                 Section(header: Text("Persönliche Daten")) {
                     TextField(
                         "Kürzel",

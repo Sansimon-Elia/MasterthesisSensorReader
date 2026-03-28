@@ -11,6 +11,10 @@ import WatchConnectivity
 @Observable
 class WatchReciverController: NSObject, WCSessionDelegate {
     
+    // Code von mir Sansimon für Python
+    let pythonBridge = PythonBridgeService()
+    var isStreamingToPython: Bool = false
+    
     // MARK: - Class loading
     let csvWriter = WatchCsvWriter()
     let soundservice = SoundService()
@@ -133,6 +137,11 @@ class WatchReciverController: NSObject, WCSessionDelegate {
                 DispatchQueue.main.async {
                     self.sensorData.append(contentsOf: sensorArray)
                     self.lastSensorData = sensorArray.last
+                    
+                    //Code von mir hinzugefügt für Senden von Daten
+                    if self.isStreamingToPython, let latest = sensorArray.last {
+                        self.pythonBridge.sendSensorData(latest)
+                    }
                     
                     let filter = SensorDataProcessor(alpha: 0.2)
                     let filteredSensorArray = sensorArray.map { filter.processData($0) }
