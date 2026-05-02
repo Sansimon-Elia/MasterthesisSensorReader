@@ -31,6 +31,13 @@ class PythonBridgeService {
             "motionPitch": motion.pitch,
             "motionRoll": motion.roll,
             "rotationRateZ": motion.rotationRateZ,
+        
+            //Neu
+            "gravityX": data.deviceMotionData?.gravityAccelX ?? 0,
+            "gravityY": data.deviceMotionData?.gravityAccelY ?? 0,
+            "gravityZ": data.deviceMotionData?.gravityAccelZ ?? 0,
+            
+            
             "heartRate": heartRate,
             "averageHeartRate": averageHeartRate
         ]
