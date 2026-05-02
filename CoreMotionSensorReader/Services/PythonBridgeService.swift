@@ -8,9 +8,17 @@
 import Foundation
 
 class PythonBridgeService {
+    //192.168.178.20  von PC .175 vom Laptop
     
     // HIER DEINE WINDOWS IP EINTRAGEN
-    private let serverURL = URL(string: "http://192.168.178.20:56671/sensorlog")!
+    //private let serverURL = URL(string: "")
+    private var serverURL: URL? {
+        let ip = UserDefaults.standard.string(forKey: "python_server_ip") ?? ""
+        let port = UserDefaults.standard.string(forKey: "python_server_port") ?? "56671"
+        
+        guard !ip.isEmpty else { return nil }
+        return URL(string: "http://\(ip):\(port)/sensorlog")
+    }
     
     func sendSensorData(_ data: SensorData, heartRate: Double, averageHeartRate: Double) {
         guard let motion = data.deviceMotionData else { return }
@@ -27,6 +35,11 @@ class PythonBridgeService {
             "averageHeartRate": averageHeartRate
         ]
         
+        guard let serverURL = serverURL else {
+            print("Keine Server-URL gesetzt")
+            return
+        }
+
         var request = URLRequest(url: serverURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

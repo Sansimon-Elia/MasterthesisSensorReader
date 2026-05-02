@@ -25,6 +25,10 @@ struct WatchAirPodsSensorView: View {
     @State private var age: String = ""
     @State private var armlength: String = ""
     
+    @State private var pythonServerIP: String = UserDefaults.standard.string(forKey: "python_server_ip") ?? ""
+    @State private var pythonServerPort: String = UserDefaults.standard.string(forKey: "python_server_port") ?? "56671"
+    @State private var showSavedMessage: Bool = false
+    
     
     @FocusState private var focusedField: Field?
     
@@ -52,6 +56,30 @@ struct WatchAirPodsSensorView: View {
                 
                 // Toggle von Sansimon um SendeDaten zu aktivieren um Daten an Flask Server zu schicken
                 Section(header: Text("Python Streaming")) {
+                    TextField("Server-IP, z.B. 192.168.178.20", text: $pythonServerIP)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                    
+                    TextField("Port", text: $pythonServerPort)
+                        .keyboardType(.numberPad)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                    
+                    Button("Server speichern") {
+                        UserDefaults.standard.set(pythonServerIP, forKey: "python_server_ip")
+                        UserDefaults.standard.set(pythonServerPort, forKey: "python_server_port")
+                        showSavedMessage = true
+                    }
+                    
+                    if showSavedMessage {
+                        Text("Server gespeichert")
+                            .foregroundStyle(.green)
+                    }
+                    
+                    Text("Aktueller Server: \(pythonServerIP):\(pythonServerPort)")
+                        .font(.caption)
+                        .foregroundStyle(.gray)
+                    
                     Toggle("Sende Sensordaten an Python", isOn: $watchReciever.isStreamingToPython)
                 }
                 
