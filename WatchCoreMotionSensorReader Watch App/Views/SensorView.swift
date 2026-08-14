@@ -42,7 +42,13 @@ struct SensorView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.red)
             }
-            
+            // ── NEU: Rückwärts-Button, ausgelöst durch Double Tap ──
+            Button("⏪ Rückwärts") {
+                sensorReader.sendDoubleTap()
+            }
+            .buttonStyle(.bordered)
+            .tint(.purple)
+            .handGestureShortcut(.primaryAction)   // ← Double Tap löst DIESEN Button aus
             
             
         }.onAppear() {

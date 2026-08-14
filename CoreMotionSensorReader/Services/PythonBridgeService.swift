@@ -71,4 +71,28 @@ class PythonBridgeService {
             print("JSON Fehler:", error)
         }
     }
+    
+    func sendDoubleTap() {
+            guard let serverURL = serverURL else {
+                print("Keine Server-URL gesetzt")
+                return
+            }
+            
+            var request = URLRequest(url: serverURL)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let payload: [String: Any] = ["doubleTap": true]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: payload)
+                URLSession.shared.dataTask(with: request) { _, response, error in
+                    if let error = error {
+                        print("Double Tap HTTP Fehler:", error.localizedDescription)
+                    }
+                }.resume()
+            } catch {
+                print("JSON Fehler:", error)
+            }
+        }
 }

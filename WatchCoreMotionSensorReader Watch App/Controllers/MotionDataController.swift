@@ -118,4 +118,7 @@ class MotionDataController {
         motionManager.stopDeviceMotionUpdates()
         batchTimer?.invalidate()
     }
+    func sendDoubleTap() {
+            connectivity.sendDoubleTap()
+        }
 }

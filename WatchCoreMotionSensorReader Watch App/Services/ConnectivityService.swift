@@ -96,6 +96,20 @@ class ConnectivityService: NSObject, WCSessionDelegate {
             print("Payload konnte nicht encodiert werden")
         }
     }
+    
+    func sendDoubleTap() {
+            guard session.activationState == .activated && session.isReachable else {
+                print("Session nicht erreichbar – Double Tap nicht gesendet")
+                return
+            }
+            
+            session.sendMessage(["doubleTap": true], replyHandler: nil) { error in
+                print("Double Tap Sendefehler: \(error.localizedDescription)")
+            }
+            
+            // Haptisches Feedback als Bestätigung für den Nutzer
+            WKInterfaceDevice.current().play(.success)
+        }
 
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {

@@ -178,6 +178,15 @@ class WatchReciverController: NSObject, WCSessionDelegate {
         }
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+            if let doubleTap = message["doubleTap"] as? Bool, doubleTap {
+                print("Double Tap von Watch empfangen → an Python weiterleiten")
+                if self.isStreamingToPython {
+                    self.pythonBridge.sendDoubleTap()
+                }
+            }
+        }
+    
     //MARK: - Timer and Exports
     func startTimerAndExport(to fileName: String, to fileNameFeature: String) {
         self.tempData.removeAll()
