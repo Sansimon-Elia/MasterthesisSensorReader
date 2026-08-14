@@ -16,7 +16,7 @@ class WorkoutManager: NSObject, ObservableObject {
     @Published var sensorData: [SensorData] = []
     @Published var lastSensorData: SensorData?
     
-    private var sensorReader = MotionDataController()
+    private let sensorReader = MotionDataController()
 
     
     let healthStore = HKHealthStore()
@@ -93,6 +93,10 @@ class WorkoutManager: NSObject, ObservableObject {
     func endWorkout() {
         session?.end()
         sensorReader.stopReadingSensors()
+    }
+    
+    func sendDoubleTap() {
+        sensorReader.sendDoubleTap()
     }
     
     func updateForStatistics(_ statistics: HKStatistics?) {

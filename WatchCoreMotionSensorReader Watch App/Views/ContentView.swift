@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var sensorReader = MotionDataController()
     @StateObject var workoutManager = WorkoutManager()
 
     var body: some View {
         TabNavView()
-            .environment(sensorReader)
             .environmentObject(workoutManager)
     }
 }

@@ -9,7 +9,7 @@ class MotionDataController {
     
     private let connectivity = ConnectivityService()
     
-    var workoutManager : WorkoutManager?
+    weak var workoutManager : WorkoutManager?
     
     private var sensorBuffer: [SensorData] = []
     private let maxBufferSize = 500 

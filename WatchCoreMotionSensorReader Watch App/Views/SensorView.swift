@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SensorView: View {
     
-    @Environment(MotionDataController.self) private var sensorReader
-    @StateObject private var workoutManager = WorkoutManager()
+    @EnvironmentObject private var workoutManager : WorkoutManager
     
     @State var startedRunning: Bool = false
     
@@ -44,7 +43,7 @@ struct SensorView: View {
             }
             // ── NEU: Rückwärts-Button, ausgelöst durch Double Tap ──
             Button("⏪ Rückwärts") {
-                sensorReader.sendDoubleTap()
+                workoutManager.sendDoubleTap()
             }
             .buttonStyle(.bordered)
             .tint(.purple)
@@ -60,5 +59,5 @@ struct SensorView: View {
 
 #Preview {
     SensorView()
-        .environment(MotionDataController())
+        .environmentObject(WorkoutManager())
 }
